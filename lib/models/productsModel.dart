@@ -23,6 +23,7 @@ class ProductstsModel {
       title: jsonData['title'],
       price: jsonData['price'],
       description: jsonData['description'],
+      
       image: jsonData['image'],
       rating: Rating.fromJson(jsonData['rating']),
     );

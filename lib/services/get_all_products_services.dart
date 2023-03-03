@@ -8,9 +8,9 @@ import '../models/productsModel.dart';
 class AllProductsService {
   Future<List<ProductstsModel>> getAllProducts() async {
     String baseUrl = "https://fakestoreapi.com/products";
-    http.Response response = await Api().get(apiUrl: baseUrl);
+    // http.Response response = await Api().get(apiUrl: baseUrl);
     List<ProductstsModel> productModelList = [];
-    List<dynamic> data = jsonDecode(response.body);
+    List<dynamic> data = await Api().get(apiUrl: baseUrl);
     for (int i = 0; i < data.length; i++) {
       productModelList.add(ProductstsModel.fromJson(data[i]));
     }

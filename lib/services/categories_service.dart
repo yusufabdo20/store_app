@@ -8,8 +8,8 @@ class CategoriesService {
   Future<List<ProductstsModel>> getCategoriesProducts(
       {required String categoryName}) async {
     String baseUrl = "https://fakestoreapi.com/products/category/$categoryName";
-    http.Response response = await Api().get(apiUrl: baseUrl);
-    List<dynamic> data = jsonDecode(response.body);
+    // http.Response response = await Api().get(apiUrl: baseUrl);
+    List<dynamic> data =await Api().get(apiUrl: baseUrl);
     List<ProductstsModel> productsList = [];
     for (int i = 0; i < data.length; i++) {
       productsList.add(

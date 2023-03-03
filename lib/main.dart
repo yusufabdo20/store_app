@@ -1,21 +1,26 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:store_app/models/productsModel.dart';
 import 'package:store_app/services/get_all_products_services.dart';
+import 'package:http/http.dart' as http;
+
+import 'screens/home_screen.dart';
+
 void main() {
-  runApp(MyApp());
+  runApp(StoreApp());
 }
 
-class MyApp extends StatelessWidget {
+class StoreApp extends StatelessWidget {
+  const StoreApp({super.key});
+
   @override
-  Widget build(Object context) {
+  Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: SafeArea(
-            child: TextButton(
-                onPressed: () async {
-                },
-                child: Text("Get all product"))),
-      ),
+      debugShowCheckedModeBanner: false,
+      initialRoute: HomeScreen.id,
+      routes: {
+        HomeScreen.id: (context) => HomeScreen(),
+      },
     );
   }
 }
