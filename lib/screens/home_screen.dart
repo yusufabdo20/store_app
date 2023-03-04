@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:store_app/models/productsModel.dart';
+import 'package:store_app/services/get_all_products_services.dart';
+import 'package:store_app/widgets/custom_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -30,10 +34,34 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: FaIcon(FontAwesomeIcons.cartShopping, color: Colors.black),
+            icon: Icon(Icons.shopping_cart_rounded, color: Colors.black),
           ),
         ],
       ),
+      body: Padding(
+          padding: const EdgeInsets.only(top: 60, left: 16, right: 16),
+          child: FutureBuilder<List<ProductstsModel>>(
+            future: AllProductsService().getAllProducts(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return GridView.builder(
+                  clipBehavior: Clip.none,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1.6,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 75),
+                  itemBuilder: (context, index) => CustomCard(
+                      title: "title fd sf Sdfdv dfvd",
+                      price: "price",
+                      image:
+                          "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"),
+                );
+              } else {
+                return CircularProgressIndicator();
+              }
+            },
+          )),
     );
   }
 }

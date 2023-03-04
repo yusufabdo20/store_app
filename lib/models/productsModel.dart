@@ -1,7 +1,7 @@
 class ProductstsModel {
   int? id;
   String? title;
-  double? price;
+  var price;
   String? description;
   // String? category;
   String? image;
@@ -45,7 +45,7 @@ class ProductstsModel {
 }
 
 class Rating {
-  double? rate;
+  var rate;
   int? count;
 
   Rating({this.rate, this.count});

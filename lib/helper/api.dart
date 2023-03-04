@@ -16,7 +16,7 @@ class Api {
       headers: headers,
     );
     if (response.statusCode == 200) {
-      Map<String, dynamic> data = jsonDecode(response.body);
+    List<dynamic> data = jsonDecode(response.body);
       return data;
     } else {
       return throw Exception(
