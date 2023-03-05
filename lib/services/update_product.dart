@@ -31,29 +31,3 @@ class UpdateProductService {
     return ProductstsModel.fromJson(data);
   }
 }
-
-// Future<ProductstsModel> updateProduct(
-//   String id,
-//   String title,
-//   String price,
-//   String description,
-//   String image,
-//   String category,
-// ) async {
-//   http.Response response = await http.put(
-//     Uri.parse('https://fakestoreapi.com/products/$id'),
-//     headers: <String, String>{
-//       'Content-Type': 'application/json; charset=UTF-8',
-//     },
-//     body: jsonEncode(<String, dynamic>{
-//       'id': id,
-//       "title": title,
-//       "price": price,
-//       "description": description,
-//       "image": image,
-//       "category": category,
-//     }),
-//   );
-//   Map<String, dynamic> data = jsonDecode(response.body);
-//   return ProductstsModel.fromJson(data);
-// }
