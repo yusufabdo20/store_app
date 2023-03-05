@@ -16,7 +16,7 @@ class Api {
       headers: headers,
     );
     if (response.statusCode == 200) {
-    List<dynamic> data = jsonDecode(response.body);
+      List<dynamic> data = jsonDecode(response.body);
       return data;
     } else {
       return throw Exception(
@@ -60,6 +60,7 @@ class Api {
     if (token != null) {
       headers.addAll({'Authorization': 'Bearer $token'});
     }
+    print("Api url = $apiUrl \n body= $body \n token = $token");
     http.Response response = await http.put(
       Uri.parse(apiUrl),
       body: body,
@@ -67,10 +68,11 @@ class Api {
     );
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
+      print("Data = $data");
       return data;
     } else {
       return throw Exception(
-          "There is PROBLEM in Status Code in POST Method is =! 200 ====>>>>>${response.statusCode} ,,,,, ${jsonDecode(response.body)} ");
+          "There is PROBLEM in Status Code in POST Method is =! 200 ====>>>>>${response.statusCode}  ");
     }
   }
 

@@ -3,29 +3,30 @@ class ProductstsModel {
   String? title;
   var price;
   String? description;
-  // String? category;
+  String? category;
   String? image;
-  Rating? rating;
+  // Rating? rating;
 
-  ProductstsModel(
-      {required this.id,
-      required this.title,
-      required this.price,
-      required this.description,
-      // required this.category,
-      required this.image,
-      required this.rating});
-
+  ProductstsModel({
+   required this.id,
+    required this.title,
+    required this.price,
+    required this.description,
+    required this.category,
+    required this.image,
+    // required this.rating
+  });
 
   factory ProductstsModel.fromJson(Map<String, dynamic> jsonData) {
     return ProductstsModel(
       id: jsonData['id'],
       title: jsonData['title'],
       price: jsonData['price'],
+      category: jsonData['category'],
       description: jsonData['description'],
-      
+
       image: jsonData['image'],
-      rating: Rating.fromJson(jsonData['rating']),
+      // rating: Rating.fromJson(jsonData['rating']),
     );
   }
 

@@ -44,18 +44,23 @@ class _HomeScreenState extends State<HomeScreen> {
             future: AllProductsService().getAllProducts(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                List<ProductstsModel> products = snapshot.data!;
+
                 return GridView.builder(
+                  itemCount: products.length,
                   clipBehavior: Clip.none,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       childAspectRatio: 1.6,
                       crossAxisSpacing: 10,
-                      mainAxisSpacing: 75),
+                      mainAxisSpacing: 80),
                   itemBuilder: (context, index) => CustomCard(
-                      title: "title fd sf Sdfdv dfvd",
-                      price: "price",
-                      image:
-                          "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"),
+                    product: products[index],
+                      // title: "title fd sf Sdfdv dfvd",
+                      // price: "price",
+                      // image:
+                      //     "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
+                      ),
                 );
               } else {
                 return CircularProgressIndicator();
